@@ -14,7 +14,7 @@ function removeDuplicates(nums) {
 
   console.log("unique", uniqueCount);
 
-  // Fill the remaining slots with "_"
+  // Fill the remaining slots with "
   for (let i = uniqueCount; i < nums.length; i++) {
     nums[i] = "_";
   }
