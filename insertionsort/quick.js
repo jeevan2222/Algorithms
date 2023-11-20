@@ -1,4 +1,5 @@
 function quick(arr) {
+  //We will break down the untill array length is 1
   if (arr.length < 2) {
     return arr;
   }
