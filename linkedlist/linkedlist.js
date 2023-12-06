@@ -18,6 +18,43 @@ class linkedList {
   isEmpty() {
     return this.size === 0;
   }
+  insert(value, index) {
+    if (index < 0 || this.size < index) {
+      console.log("invalid Index");
+      return;
+    } else if (index == 0) {
+      this.prepend(value);
+    } else {
+      let addNode = new node(value);
+      let prev = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        prev = prev.next;
+      }
+      addNode.next = prev.next;
+      prev.next = addNode;
+      this.size++;
+    }
+  }
+  removeList(index) {
+    if (index < 0 || index > this.size) {
+      console.log("invalid index>>>>");
+      return null;
+    } else if (index === 0) {
+      var removedNode = this.head;
+      this.head = this.head.next;
+      this.size--;
+    } else {
+      let prev = this.head;
+
+      for (let i = 0; i < index - 1; i++) {
+        prev = this.head;
+      }
+      var removedNode = prev.next;
+      prev.next = removedNode.next;
+    }
+    this.size--;
+    return removedNode.value;
+  }
 
   append(value) {
     const addNode = new node(value);
@@ -63,8 +100,12 @@ const link = new linkedList();
 link.prepend(10);
 link.prepend(20);
 link.prepend(30);
-link.append(40);
+// link.append(40);
+// link.print();
 console.log("print");
-link.print();
+// link.insert(50, 3);
+// link.print();
+console.log(link.removeList(1));
+
 console.log("size", link.getSize());
 console.log("Empty", link.isEmpty());
