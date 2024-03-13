@@ -1,16 +1,17 @@
 
 
+var removeElement = function(nums, val) {
+    let k = 0;
 
-function removeElement(nums, target) {
- let filterArray=nums.filter((ele)=>ele!==target);
- let filter=nums.filter((ele)=>ele==target)
+   for (let i = 0; i < nums.length; i++) {
+       if (nums[i] !== val) {
+           nums[k] = nums[i];
+           k++;
+       }
+   }
 
-filter.forEach(element => {
-    filterArray.push('_')
-});
-return filterArray
-}
-
+   return k;
+};
 
 
 let nums = [3,2,2,3];
