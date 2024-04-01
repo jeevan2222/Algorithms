@@ -1,1 +1,0 @@
-function first(array, target) {}
