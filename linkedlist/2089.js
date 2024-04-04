@@ -1,19 +1,33 @@
-// Program to implement iterative Binary Search
+var targetIndices = function (nums, target) {
+  let istrue;
+  do {
+    istrue = false;
+    for (let i = 0; i < nums.length; i++) {
+      if (nums[i + 1] < nums[i]) {
+        temp = nums[i];
+        nums[i] = nums[i + 1];
+        nums[i + 1] = temp;
+        istrue = true;
+      }
+    }
+  } while (istrue);
 
-// A iterative binary search function. It returns
-// location of x in given array arr[l..r] is present,
-// otherwise -1
+  return binarySearch(nums, target);
+};
 
 function binarySearch(arr, x) {
   let l = 0;
   let r = arr.length - 1;
   let mid;
+  let res = [];
   while (r >= l) {
     mid = l + Math.floor((r - l) / 2);
 
     // If the element is present at the middle
     // itself
-    if (arr[mid] == x) return mid;
+    if (arr[mid] == x) {
+      res.push(mid);
+    }
 
     // If element is smaller than mid, then
     // it can only be present in left subarray
@@ -28,13 +42,6 @@ function binarySearch(arr, x) {
   return -1;
 }
 
-arr = new Array(2, 3, 4, 10, 40);
-x = 10;
-n = arr.length;
-result = binarySearch(arr, x);
-
-result == -1
-  ? console.log("Element is not present in array")
-  : console.log("Element is present at index " + result);
-
-// This code is contributed by simranarora5sos and rshuklabbb
+nums = [4, 7, 3, 1, 3, 9];
+target = 3;
+console.log(targetIndices(nums, target));
