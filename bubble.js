@@ -1,21 +1,25 @@
-function bubbleSort(array) {
-  const n = array.length;
-  let isSwapped;
-  do {
-    isSwapped = false;
-    for (let i = 0; i < n - 1; i++) {
-      if (array[i] === array[i + 1]) {
-        let temp = array[i];
-        array[i] = array[i + 1];
-        array[i + 1] = temp;
-        isSwapped = true;
-      }
-    }
-  } while (isSwapped);
-}
+// function bubbleSort(ar){
+//   let isfind ;
+//   do{
+//     isfind = false;
+//   for(let i=0;i<ar.length;i++){
+// if(ar[i]>ar[i+1]){
+//   temp=ar[i];
+//   ar[i]=ar[i+1];
+//   ar[i+1]=temp;
+//   isfind=true
+// }
+// }}while(isfind)
+// return ar;
+// }
+// let array=[22,32,52,14,67,99,42]
+// console.log(bubbleSort(array))
 
-const array = [-2, 8, 34, 21, 99, 32, 20];
-bubbleSort(array);
-console.log(array);
+//Bubble sortings
 
-//big O(n^2)  //here we are using two loops
+//here im declaring isfind flag to check whether a bubble is found in the array .
+
+
+let name="pawan kumar"
+
+console.log(name.sort())
