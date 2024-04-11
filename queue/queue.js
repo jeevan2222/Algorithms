@@ -24,4 +24,4 @@ let ob = new queue();
 ob.enqueue(6);
 ob.enqueue(16);
 ob.enqueue(26);
-console.log(ob.peek());
+console.log(ob.print());
