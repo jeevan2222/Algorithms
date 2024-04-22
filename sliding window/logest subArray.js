@@ -40,3 +40,4 @@ let nums = [3, 1, 2, 7, 4, 2, 1, 1, 5];
 let k = 8;
 
 console.log(findLength(nums, k));
+findLengthfindLength;
