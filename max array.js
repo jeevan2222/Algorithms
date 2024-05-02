@@ -1,3 +1,33 @@
-// Problem: Given an array of integers, find the maximum sum of a subarray with a fixed window size.
+a = [
+  {
+    name: "jeevan",
+    age: 23,
+    job: "software",
+  },
+  {
+    name: "mounika",
+    age: 26,
+    job: "software",
+  },
+  {
+    name: "pk",
+    age: 23,
+    job: "hero",
+  },
+  {
+    name: "mdurga",
+    age: 21,
+    job: "h",
+  },
+];
 
-// Let’s consider the array: [2, 1, 5, 1, 3, 2] and a window size of 3.
+let filterData = a.map((ele) => {
+  if (ele.age < 25) {
+    return {
+      Name: ele.name,
+      Age: ele.age,
+      Job: ele.job,
+    };
+  }
+});
+console.log(filterData);
