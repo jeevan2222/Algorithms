@@ -23,19 +23,102 @@ class singleLinkedList {
     this.size++;
     return this;
   }
+  pop() {
+    if (!this.size) return "Empty list";
 
-  travers() {
+    if (!this.head.next) {
+      // If there's only one element in the list
+      this.head = null;
+      this.tail = null;
+      this.size = 0;
+      return;
+    }
+
     let current = this.head;
-    while (current) {
-      console.log(current.value);
+    while (current.next.next) {
       current = current.next;
     }
+    let temp = current.next;
+    this.tail = current;
+    this.tail.next = null;
+    this.size--;
+    return temp;
+  }
+  insert(index, value) {
+    if (index < 0 || index > this.size) {
+      return "Index out of range";
+    }
+
+    let newNode = new node(value);
+
+    if (index === 0) {
+      // Inserting at the beginning
+      newNode.next = this.head;
+      this.head = newNode;
+      if (!this.tail) {
+        // If the list was empty, update tail
+        this.tail = newNode;
+      }
+    } else {
+      let current = this.head;
+      let i = 0;
+      while (i < index - 1) {
+        current = current.next;
+        i++;
+      }
+      newNode.next = current.next;
+      current.next = newNode;
+
+      if (!newNode.next) {
+        // If the new node is the new tail
+        this.tail = newNode;
+      }
+    }
+
+    this.size++;
+  }
+  travers(val) {
+    let dummy = new node(null); // Create a dummy node to handle the case where the head node itself is removed
+    dummy.next = this.head; // Set the next of the dummy node to the head of the list
+    let current = dummy; // Start traversal from the dummy node
+
+    while (current && current.next) {
+      if (current.next.value === val) {
+        current.next = current.next.next; // Skip the node with the specified value
+        this.size--; // Decrement the size of the list
+      } else {
+        current = current.next; // Move to the next node
+      }
+    }
+
+    this.head = dummy.next; // Update the head of the list
+    return this.head; // Return the head of the modified list
+  }
+
+  check() {
+    let fast = this.head;
+    let slow = this.head;
+    while (fast && fast.next) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    console.log("slow", slow);
+    console.log("fast", fast);
   }
 }
 let single = new singleLinkedList();
 // newNode.next = new node("jeevan");
-single.push("Hi");
-single.push("Mounika");
-console.log(single.push("Jeevan"));
-console.log(single.travers());
-// single.push("Jeevan");
+single.push("1");
+single.push("2");
+single.push("6");
+single.push("3");
+single.push("4");
+single.push("5");
+single.push("6");
+// single.push("Mounika");
+// console.log(single.push("Jeevan"));
+// console.log(single.push("WEbd"));
+// console.log(single.insert(3, "BJP"));
+console.log(single.check());
+
+console.log(single.travers(6));
