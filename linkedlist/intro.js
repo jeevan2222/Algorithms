@@ -1,3 +1,5 @@
+const { prettify } = require("razorpay/dist/utils/razorpay-utils");
+
 class node {
   constructor(value) {
     this.value = value;
@@ -94,6 +96,27 @@ class singleLinkedList {
     this.head = dummy.next; // Update the head of the list
     return this.head; // Return the head of the modified list
   }
+  remove(index) {
+    if (index < 0 || index >= this.size) {
+      return "Invalid index";
+    }
+
+    let removedNode;
+    if (index === 0) {
+      removedNode = this.head;
+      this.head = this.head.next;
+    } else {
+      let prev = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        prev = prev.next;
+      }
+      removedNode = prev.next;
+      prev.next = prev.next.next;
+    }
+    this.size--;
+    removedNode.next = null; // Ensure proper memory management
+    return removedNode;
+  }
 
   check() {
     let fast = this.head;
@@ -104,6 +127,13 @@ class singleLinkedList {
     }
     console.log("slow", slow);
     console.log("fast", fast);
+  }
+  removeElement(val) {
+    let dummy = this.head;
+    let current = this.head;
+    while(current && current.next){
+      if
+    }
   }
 }
 let single = new singleLinkedList();
@@ -119,6 +149,6 @@ single.push("6");
 // console.log(single.push("Jeevan"));
 // console.log(single.push("WEbd"));
 // console.log(single.insert(3, "BJP"));
-console.log(single.check());
-
-console.log(single.travers(6));
+// console.log(single.check());
+console.log(single.remove(3));
+// console.log(single.travers(6));
