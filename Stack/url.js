@@ -1,0 +1,3 @@
+let url="https://strapi-airlineholidays-s3-bucket.s3.eu-west-1.amazonaws.com/images/Hotel/1030978/1.jpg?X-Amz-Expires=900&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIASR3GR7JPQGY564KW%2F20240807%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20240807T091623Z&X-Amz-SignedHeaders=host&X-Amz-Signature=992cd346f732eaf0f26cd3815e8c1c059499bd5508f18dacd9661082cdbf86ea"
+let res=Number(url.split('Hotel/')[1].split("/")[0])
+console.log(typeof res)

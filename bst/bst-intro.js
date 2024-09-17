@@ -37,7 +37,23 @@ class BST {
     }
     return false;
   }
+  BST(){
+    let Visited=[],
+        Queue=[],
+        Node=this.root;
+      Queue.push(Node)
+      while(Queue.length){
+        Node=Queue.shift()
+        Visited.push(Node.values)
+        if(Node.left) Queue.push(Node.left)
+        if(Node.right) Queue.push(Node.right)
+        if(Node.left==null) Visited.push(null)
+        if(Node.right==null) Visited.push(null)
+      }
+    return Visited;
+  }
 }
+
 class Node {
   constructor(values) {
     this.values = values;
@@ -49,8 +65,12 @@ let tree = new BST();
 tree.insert(10);
 tree.insert(15);
 tree.insert(5);
+tree.insert(1);
+tree.insert(2);
+tree.insert(7);
 tree.insert(20);
 tree.insert(18);
 // tree.insert(30);
 console.log(tree.search(30));
+console.log(tree.BST());
 console.log(tree);
